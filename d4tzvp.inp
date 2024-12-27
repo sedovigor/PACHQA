@@ -1,0 +1,14 @@
+%pal nprocs 12 end
+
+! wB97X-D4 def2-TZVP def2/J RIJCOSX
+
+%elprop
+    Quadrupole True
+    Polar 1
+end
+
+%output
+    Print[ P_BondOrder_L ] 1
+end
+
+*xyzfile 0 1 r2scan.xyz

@@ -1,0 +1,15 @@
+%pal nprocs 12 end
+
+! r2scan-3c
+! Opt Freq
+
+%elprop
+    Quadrupole True
+    Polar 1
+end
+
+%output
+    Print[ P_BondOrder_L ] 1
+end
+
+*xyzfile 0 1 xtb2.xtbopt.xyz
