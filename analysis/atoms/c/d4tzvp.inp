@@ -1,0 +1,8 @@
+#%pal nprocs 10 end
+
+! UHF wB97X-D4 def2-TZVP def2/J RIJCOSX
+! Freq
+
+* xyz 0 3
+C 0 0 0
+*
