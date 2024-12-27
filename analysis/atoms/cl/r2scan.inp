@@ -1,0 +1,8 @@
+#%pal nprocs 10 end
+
+! UHF r2scan-3c def2/J RIJCOSX
+! Freq
+
+* xyz 0 2
+Cl 0 0 0
+*
