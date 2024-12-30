@@ -1,0 +1,19 @@
+# python envrionment and pycache
+**/.venv
+__pycache__
+
+# extracted files from validation
+validation/data
+validation/compas
+validation/qmugs
+
+# tmp files from validation
+validation/tmp_compas
+validation/tmp_qmugs
+validation/cache
+
+# extracted files from propery_parsing
+property_parsing/data
+
+PACHQA1-main.7z
+PACHQA2-full_outfiles.7z
