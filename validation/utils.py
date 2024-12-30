@@ -21,7 +21,7 @@ def get_inchikey_from_smiles(smiles: str) -> str:
 
 
 @cache.memoize()
-def get_datcl_structures(datcl_structures_path):
+def get_pachqa_structures(datcl_structures_path):
     datcl_structures_path = Path(datcl_structures_path).absolute()
     datcl_structures_mapped = {}
     for structure in datcl_structures_path.glob("**/*.sdf"):
