@@ -42,25 +42,6 @@ def get_atomiz_props(df, prop):
         prop_list.append(atomiz_prop)
     return prop_list
 
-
-def process_xtb_tQ(qstr):
-    qlist = list(map(float, qstr.split()))
-    qlist = [str(round(x, 3)) for x in qlist]
-    return ' '.join(qlist)
-
-def process_orca_tQ(qstr):
-    qlist = qstr.split()
-    qlist = [float(x) for x in qlist]
-
-    trace = round(sum(qlist[:3])/3, 5)
-    qlist = [x - trace if i < 3 else x for i, x in enumerate(qlist)]
-
-    qlist = [str(round(x, 5)) for x in qlist]
-
-    qlist.insert(1, qlist.pop(3))
-    qlist.insert(5, qlist.pop(3))
-    return ' '.join(qlist)
-
 if __name__ == "__main__":
     input_path = sys.argv[1]
     output_path = sys.argv[2]
