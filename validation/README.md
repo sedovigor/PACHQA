@@ -6,7 +6,7 @@ Create python environment and install requirements.txt
 ```bash
 python3 -m venv venv
 source venv/bin/activate
-pip3 intstall -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ### Extract `PACHQA1-main.7z` to `data`.
@@ -25,7 +25,7 @@ rm -rf compas/.git
 
 ### Extract QMUGS data to `qmugs` directory.
 
-Download from [libdrive](https://libdrive.ethz.ch/index.php/s/X5vOBNSITAG5vzM) `structures.tar.gz` and `summary.csv` and extract this files.
+Download from the [QMugs repository](https://libdrive.ethz.ch/index.php/s/X5vOBNSITAG5vzM) `structures.tar.gz` and `summary.csv` and extract these files.
 
 ```bash
 mkdir qmugs
