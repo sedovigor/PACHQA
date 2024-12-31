@@ -67,7 +67,7 @@ for sup_dir in 'pubchemPAH' 'pubchemPCH' 'monoCl' 'polyCl' 'perCl'; do
                 cG=$G
 
             else
-                content=$(cat r2scan.out)
+                content=$(cat d4tzvp.out)
 
                 E=$(echo "$content" | grep 'FINAL SINGLE POINT ENERGY' | tail -1 | awk '{print $5}')
                 H=$(echo "print($cH - round($cE, 10) + round($E, 10))" | python)
