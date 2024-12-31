@@ -1,5 +1,5 @@
 # PACHQA dataset of quantum chemical properties of chlorinated polycyclic aromatic hydrocarbons (Cl-PAHs)
-The dataset_generation.ipynb notebook was used to prepare the input molecules for the dataset generation. The files `chcl.sdf` and `ArCH.sdf` used by the notebook contain the structures of all Cl-PAHs and PAHs extracted from the PubChem database. They must be unpacked with 7z:
+The `dataset_generation.ipynb` notebook was used to prepare the input molecules for the dataset generation. The files `chcl.sdf` and `ArCH.sdf` used by the notebook contain the structures of all Cl-PAHs and PAHs extracted from the PubChem database. They must be unpacked with 7z:
 ```bash
 7z x chcl.7z
 7z x ArCH.7z
