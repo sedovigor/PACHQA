@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Dict, List, Optional
 
 from rdkit import Chem
 from rdkit.Chem import AllChem, rdDetermineBonds, rdMolAlign
@@ -60,7 +60,7 @@ def read_mol(file: Path, file_ref: Optional[Path]) -> Chem.Mol:
     return mol
 
 
-def dump_mols(mol_arr: list[Chem.Mol], dump_name: str):
+def dump_mols(mol_arr: List[Chem.Mol], dump_name: str):
     with Chem.SDWriter(f"{dump_name}.sdf") as sdf_writer:
         for mol in mol_arr:
             mol = Chem.AddHs(mol, addCoords=True)
