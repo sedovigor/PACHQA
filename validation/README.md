@@ -19,8 +19,16 @@ mkdir data
 ### Extract COMPAS data to `compas` directory and prepare structures.
 
 ```bash
-git clone --depth=1 https://gitlab.com/porannegroup/compas
-rm -rf compas/.git
+for required_file in COMPAS-1/compas-1x.tar.gz \
+                     COMPAS-1/compas-1x.csv \
+                     COMPAS-2/compas-2x.sdf.gz \
+                     COMPAS-2/compas-2x.csv \
+                     COMPAS-3/compas-3x.tar.gz \
+                     COMPAS-3/compas-3x.csv
+do 
+    mkdir -p compas/$(dirname $required_file)
+    curl "https://gitlab.com/porannegroup/compas/-/raw/main/$required_file" --output compas/$required_file
+done
 cd compas
 cd COMPAS-1
 tar xvf compas-1x.tar.gz

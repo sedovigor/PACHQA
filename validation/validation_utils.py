@@ -1,5 +1,5 @@
 from pathlib import Path
-from functools import cache
+from typing import Dict, Optional
 
 from rdkit import Chem
 from rdkit.Chem import AllChem, rdDetermineBonds, rdMolAlign
@@ -8,14 +8,24 @@ SDF_EXT = "sdf"
 XYZ_EXT = "xyz"
 
 
-@cache
+def memoize_string_input(func):
+    # NOTE(ilyaibraev): Usage of this decorator is not recommended due to unlimited memory usage
+    cache = {}
+    def wrapper(input_str: str):
+        if input_str not in cache:
+            cache[input_str] = func(input_str)
+        return cache[input_str]
+    return wrapper
+
+
+@memoize_string_input
 def get_inchikey_from_smiles(smiles: str) -> str:
     mol = Chem.MolFromSmiles(smiles)
     inchikey = Chem.rdinchi.MolToInchiKey(mol)
     return inchikey
 
 
-def get_pachqa_structures(pachqa_structures_path) -> dict[str, Path]:
+def get_pachqa_structures(pachqa_structures_path) -> Dict[str, Path]:
     pachqa_structures_path = Path(pachqa_structures_path).absolute()
     pachqa_structures_mapped = {}
     for structure in pachqa_structures_path.glob("**/*.sdf"):
@@ -37,7 +47,7 @@ def get_mol_with_ref(file: Path, file_ref: Path) -> Chem.Mol:
     return mol
 
 
-def read_mol(file: Path, file_ref: Path | None) -> Chem.Mol:
+def read_mol(file: Path, file_ref: Optional[Path]) -> Chem.Mol:
     file1_ext = get_ext(file)
     if file1_ext == SDF_EXT:
         mol = Chem.SDMolSupplier(str(file))[0]
@@ -79,7 +89,7 @@ def get_rmsd(mol1: Chem.Mol, mol2: Chem.Mol, dump: bool, dump_name: str) -> floa
 
 
 def get_rmsd_between_two_molecules(
-    file1: Path, file2: Path, ref: Path | None = None, dump: bool = False, dump_name=""
+    file1: Path, file2: Path, ref: Optional[Path] = None, dump: bool = False, dump_name=""
 ) -> float:
     mol1 = read_mol(file1, ref)
     mol2 = read_mol(file2, ref)
