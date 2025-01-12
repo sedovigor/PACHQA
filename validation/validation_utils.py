@@ -11,10 +11,12 @@ XYZ_EXT = "xyz"
 def memoize_string_input(func):
     # NOTE(ilyaibraev): Usage of this decorator is not recommended due to unlimited memory usage
     cache = {}
+
     def wrapper(input_str: str):
         if input_str not in cache:
             cache[input_str] = func(input_str)
         return cache[input_str]
+
     return wrapper
 
 
@@ -89,7 +91,11 @@ def get_rmsd(mol1: Chem.Mol, mol2: Chem.Mol, dump: bool, dump_name: str) -> floa
 
 
 def get_rmsd_between_two_molecules(
-    file1: Path, file2: Path, ref: Optional[Path] = None, dump: bool = False, dump_name=""
+    file1: Path,
+    file2: Path,
+    ref: Optional[Path] = None,
+    dump: bool = False,
+    dump_name="",
 ) -> float:
     mol1 = read_mol(file1, ref)
     mol2 = read_mol(file2, ref)
