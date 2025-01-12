@@ -57,6 +57,8 @@ def read_mol(file: Path, file_ref: Optional[Path]) -> Chem.Mol:
         mol = get_mol_with_ref(file, file_ref)
     else:
         raise ValueError("Not supported ext")
+    for atom in mol.GetAtoms():
+        atom.SetNumRadicalElectrons(0)
     return mol
 
 
@@ -72,17 +74,15 @@ def dump_mols(mol_arr: List[Chem.Mol], dump_name: str):
 
 
 def get_rmsd(mol1: Chem.Mol, mol2: Chem.Mol, dump: bool, dump_name: str) -> float:
-    mol1 = Chem.RemoveAllHs(mol1)
-    mol2 = Chem.RemoveAllHs(mol2)
+    mol1 = Chem.RemoveAllHs(mol1, sanitize=False)
+    mol2 = Chem.RemoveAllHs(mol2, sanitize=False)
     normal = rdMolAlign.GetBestRMS(mol1, mol2)
-    rdMolAlign.AlignMol(mol1, mol2)
     if dump:
         dump_mols([mol1, mol2], dump_name)
     for i in range(mol2.GetNumAtoms()):
         pos = mol2.GetConformer().GetAtomPosition(i)
         mol2.GetConformer().SetAtomPosition(i, (-pos.x, pos.y, pos.z))
     rev = rdMolAlign.GetBestRMS(mol1, mol2)
-    rdMolAlign.AlignMol(mol1, mol2)
     if dump and rev < normal:
         dump_mols([mol1, mol2], dump_name)
     return min(normal, rev)

@@ -1,2 +1,2 @@
 pandas
-rdkit
+rdkit>=2024
