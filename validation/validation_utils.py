@@ -75,15 +75,16 @@ def dump_mols(mol_arr: List[Chem.Mol], dump_name: str):
             sdf_writer.write(mol)
 
 
-def get_rmsd(mol1: Chem.Mol, mol2: Chem.Mol, dump: bool, dump_name: str) -> float:
+def get_rmsd(mol1: Chem.Mol, mol2: Chem.Mol, dump: bool, dump_name: str, mirror_molecule: bool) -> float:
     mol1 = Chem.RemoveAllHs(mol1, sanitize=False)
     mol2 = Chem.RemoveAllHs(mol2, sanitize=False)
     normal = rdMolAlign.GetBestRMS(mol1, mol2)
     if dump:
         dump_mols([mol1, mol2], dump_name)
-    for i in range(mol2.GetNumAtoms()):
-        pos = mol2.GetConformer().GetAtomPosition(i)
-        mol2.GetConformer().SetAtomPosition(i, (-pos.x, pos.y, pos.z))
+    if mirror_molecule:
+        for i in range(mol2.GetNumAtoms()):
+            pos = mol2.GetConformer().GetAtomPosition(i)
+            mol2.GetConformer().SetAtomPosition(i, (-pos.x, pos.y, pos.z))
     rev = rdMolAlign.GetBestRMS(mol1, mol2)
     if dump and rev < normal:
         dump_mols([mol1, mol2], dump_name)
@@ -95,10 +96,11 @@ def get_rmsd_between_two_molecules(
     file2: Path,
     ref: Optional[Path] = None,
     dump: bool = False,
-    dump_name="",
+    dump_name: str = "",
+    mirror_molecule: bool = True,
 ) -> float:
     mol1 = read_mol(file1, ref)
     mol2 = read_mol(file2, ref)
     if dump and not dump_name:
         raise Exception("specify `dump_name` if you want to dump")
-    return get_rmsd(mol1, mol2, dump, dump_name)
+    return get_rmsd(mol1, mol2, dump, dump_name, mirror_molecule)
