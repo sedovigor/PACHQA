@@ -2,7 +2,7 @@ import sys
 import pickle
 import pandas as pd
 from sklearn.metrics import mean_absolute_error as mae
-from sklearn.metrics import root_mean_squared_error as rmse
+from sklearn.metrics import mean_squared_error as mse
 from sklearn.metrics import r2_score as r2
 
 # Define base feature levels and targets
@@ -41,7 +41,7 @@ if __name__ == "__main__":
                 'feature_set': level,
                 'target': target,
                 'mae': mae(y_test, y_pred),
-                'rmse': rmse(y_test, y_pred),
+                'rmse': mse(y_test, y_pred)**0.5,
                 'r2': r2(y_test, y_pred),
             })
 
