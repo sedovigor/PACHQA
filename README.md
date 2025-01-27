@@ -7,4 +7,4 @@ The `dataset_generation.ipynb` notebook was used to prepare the input molecules 
 
 The code filters the selected molecules by applying additional restrictions and generates new molecules not present in PubChem by adding chlorine atoms.
 
-All the molecules were minimized in the MMFF94 force field and optimized with GFN2-xTB using the bash script `xtb2.sh`. The DFT calculations were performed with ORCA 5.0.4 using the input files `r2scan.inp` and `d4tzvp.inp`. The output was parsed for the calculated properties as described in `./property_parsing`. The dataset validation scripts are available in `./validation`.
+All the molecules were minimized in the MMFF94 force field and optimized with GFN2-xTB using the bash script `xtb2.sh`. The DFT calculations were performed with ORCA 5.0.4 using the input files `r2scan.inp` and `d4tzvp.inp`. The output was parsed for the calculated properties as described in `./property_parsing`. The dataset validation scripts are available in `./validation`. The code for the Δ-learning model is in `./ml`.
