@@ -1,11 +1,11 @@
-### Working Environment  
+### Working Environment
 To set up the environment, run:  
 ```bash
 conda env create -f environment.yml
 ```
 > **Note**: This is the same environment as for property parsing.
 
-### Reproducing the Δ-Learning Approach
+### The Δ-Learning model
 
 #### 1. Split the dataset:
 Split the dataset into the training and test sets.
