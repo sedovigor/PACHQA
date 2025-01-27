@@ -14,9 +14,10 @@ if __name__ == "__main__":
 
     # Load data
     df = pd.read_csv(input_path)
+    df[['xMu', 'yMu', 'zMu']] = df['tMu'].str.split(expand=True).astype(float)
     
     # Preprocess data
-    df = df.drop(['subset', 'key', 'formula'], axis=1)
+    df = df.drop(['subset', 'key', 'formula', 'tMu'], axis=1)
     df = df.pivot(index=['id', 'smiles', 'mwt', 'nH', 'nC', 'nCl'],
                   columns='level')
     df.columns = df.columns.map(lambda x: '_'.join(x))
