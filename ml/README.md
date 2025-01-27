@@ -12,7 +12,7 @@ Split the dataset into the training and test sets.
 Specify the path to the `props.csv` file obtained after parsing.
 The training and test subsets will be saved in the specified directory (e.g., the `data` directory).
 ```
-python split.py data/props.csv data
+python split.py ../property_parsing/props.csv ./
 ```
 
 #### 2. Train the model:
@@ -20,12 +20,12 @@ Train the linear regression-enhanced forest models.
 The model automatically performs feature scaling, feature selection, and hyperparameter tuning during fitting.
 Separate models are trained for each of the 4 targets at the **d4tzvp** level using **xtb2** or **r2scan** features, and saved in the `models` directory.
 ```
-python train.py data/train_subset.csv
+python train.py train_subset.csv
 ```
 > **Note**: Training will use all available cores and may take a significant time.
 
 #### 3. Evaluate the model:
 Evaluate the model on the test subset. Metrics (MAE, RMSE, R<sup>2</sup>) are saved in `test_result.csv`.
 ```
-python eval.py data/test_subset.csv
+python eval.py test_subset.csv
 ```
