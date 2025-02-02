@@ -5,7 +5,6 @@ python3 -m venv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
 ```
-> **Note**: This is the same environment as for property parsing.
 
 ### The Δ-Learning model
 
