@@ -3,7 +3,9 @@
 ### Working Environment
 To set up the required environment, run:  
 ```bash
-conda env create -f environment.yml
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
 ```
 
 ### Reproducing Data Extraction
