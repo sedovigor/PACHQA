@@ -2,7 +2,7 @@
 
 ### Working Environment
 
-Create python environment and install requirements.txt
+To set up the required environment, run:
 ```bash
 python3 -m venv venv
 source venv/bin/activate
