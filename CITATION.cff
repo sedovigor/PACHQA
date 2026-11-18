@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use this software or dataset, please cite the following article."
+title: "PACHQA: Quantum chemical properties of chlorinated polycyclic aromatic hydrocarbons for delta machine learning"
+authors:
+  - family-names: "Frolov"
+    given-names: "Dmitry"
+    affiliation: "Sirius University of Science and Technology"
+  - family-names: "Ibraev"
+    given-names: "Ilya"
+    affiliation: "Sirius University of Science and Technology"
+  - family-names: "Sedov"
+    given-names: "Igor"
+    orcid: "https://orcid.org"
+    affiliation: "Sirius University of Science and Technology; Kazan Federal University"
+repository-code: "https://github.com/sedovigor/PACHQA/"
+doi: "10.1038/s41597-025-05383-0"
+date-released: "2025-06-21"
+license: "CC-BY-NC-ND-4.0"
+preferred-citation:
+  type: article
+  title: "Quantum chemical properties of chlorinated polycyclic aromatic hydrocarbons for delta machine learning"
+  authors:
+    - family-names: "Frolov"
+      given-names: "Dmitry"
+      affiliation: "Sirius University of Science and Technology"
+    - family-names: "Ibraev"
+      given-names: "Ilya"
+      affiliation: "Sirius University of Science and Technology"
+    - family-names: "Sedov"
+      given-names: "Igor"
+      orcid: "https://orcid.org"
+      affiliation: "Sirius University of Science and Technology; Kazan Federal University"
+  journal: "Scientific Data"
+  volume: 12
+  issue: 1
+  start: 1059
+  year: 2025
+  date-published: "2025-06-21"
+  issn: "2052-4463"
+  doi: "10.1038/s41597-025-05383-0"
+  url: "https://doi.org/10.1038/s41597-025-05383-0"
